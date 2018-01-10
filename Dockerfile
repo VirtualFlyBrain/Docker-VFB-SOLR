@@ -6,6 +6,10 @@ ENV WORKSPACE=/opt/VFB
 
 USER root
 
+RUN apt-get update && \
+  apt-get -y install git mvn && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
 cd ${WORKSPACE} && \
