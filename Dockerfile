@@ -7,7 +7,7 @@ ENV WORKSPACE=/opt/VFB
 USER root
 
 RUN apt-get update && \
-  apt-get -y install git mvn && \
+  apt-get -y install git maven && \
   rm -rf /var/lib/apt/lists/*
 
 RUN echo Building OLS && \
