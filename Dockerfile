@@ -7,7 +7,7 @@ ENV WORKSPACE=/opt/VFB
 USER root
 
 RUN apt-get update && \
-  apt-get -y install git maven && \
+  apt-get -y install git maven openjdk-8-jdk && \
   rm -rf /var/lib/apt/lists/*
 
 RUN echo Building OLS && \
