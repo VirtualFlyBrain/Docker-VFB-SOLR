@@ -4,7 +4,7 @@ ENV VFB_OWL_VERSION=Current
 
 ENV WORKSPACE=/opt/VFB
 
-USR root
+USER root
 
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
