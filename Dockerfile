@@ -6,6 +6,8 @@ ENV WORKSPACE=/opt/VFB
 
 ENV OLS_HOME=/opt/solr
 
+RUN chmod -R 777 /opt/solr
+
 USER root
 
 RUN apt-get update && \
@@ -25,7 +27,7 @@ mvn clean package
 
 COPY loadOLS.sh /opt/VFB/loadOLS.sh
 
-RUN chmod -R 777 /opt/VFB
+RUN chmod -R 777 /opt
 
 RUN chmod +x /opt/VFB/loadOLS.sh
 
