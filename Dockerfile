@@ -12,7 +12,7 @@ ENV solr.data.dir=/opt/solr/server/solr
 USER root
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install git maven openjdk-8-jdk && \
+  apt-get -qq -y install git maven openjdk-8-jdk tree nano && \
   rm -rf /var/lib/apt/lists/*
 
 RUN echo Building OLS && \
