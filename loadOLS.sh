@@ -1,9 +1,9 @@
 #!/bin/bash
 
-start-local-solr
+solr start -p 8984 -Dsolr.solr.home=${SOLR_HOME}
 
 java -Xmx2g -jar -Dspring.profiles.active=fbbt ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-stop-local-solr
+solr stop
 
-solr-foreground
+solr-foreground -Dsolr.solr.home=${SOLR_HOME}
