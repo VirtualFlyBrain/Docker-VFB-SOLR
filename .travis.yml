@@ -6,4 +6,4 @@ script:
   - docker run -d --name test -p 8983:8983 test-image:test
   - sleep 2m
   - docker logs test
-  - curl -sSf http://localhost:8983
+  - curl -sSf http://localhost:8983/solr/ontology/select
