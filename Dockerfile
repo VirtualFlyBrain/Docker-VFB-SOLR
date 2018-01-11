@@ -11,23 +11,23 @@ RUN chmod -R 777 /opt/solr
 
 USER root
 
-RUN apt-get update && \
-  apt-get -y install git maven openjdk-8-jdk && \
+RUN apt-get -qq update && \
+  apt-get -qq -y install git maven openjdk-8-jdk && \
   rm -rf /var/lib/apt/lists/*
 
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
 cd ${WORKSPACE} && \
-git clone https://github.com/EBISPOT/OLS.git
+git --quiet clone https://github.com/EBISPOT/OLS.git
 
 COPY application-fbbt.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-fbbt.properties
 
 RUN cd ${WORKSPACE}/OLS && \
-mvn clean package
+mvn -q clean package
 
 COPY loadOLS.sh /opt/VFB/loadOLS.sh
 
-RUN chmod -R 777 /opt
+RUN chmod -R 777 /opt || :
 
 RUN chmod +x /opt/VFB/loadOLS.sh
 
