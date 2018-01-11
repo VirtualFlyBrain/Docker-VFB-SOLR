@@ -18,7 +18,7 @@ RUN apt-get -qq update && \
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
 cd ${WORKSPACE} && \
-git --quiet clone https://github.com/EBISPOT/OLS.git
+git clone --quiet https://github.com/EBISPOT/OLS.git
 
 COPY application-fbbt.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-fbbt.properties
 
