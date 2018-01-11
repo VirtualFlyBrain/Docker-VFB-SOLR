@@ -18,7 +18,6 @@ RUN apt-get update && \
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
 cd ${WORKSPACE} && \
-git clone https://github.com/VirtualFlyBrain/OLS_configs.git && \
 git clone https://github.com/EBISPOT/OLS.git
 
 COPY application-fbbt.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-fbbt.properties
