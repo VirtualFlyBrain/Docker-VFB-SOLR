@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-docker-entrypoint.sh
+solr-foreground
