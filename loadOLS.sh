@@ -1,7 +1,6 @@
 #!/bin/bash
 
-solr-create -c ontology -d /ontology
-solr-create -c autosuggest -d /autosuggest
+solr-create -c ontology -d /ontology -c autosuggest -d /autosuggest
 
 solr start -p 8984 -Dsolr.solr.home=${SOLR_HOME}
 
