@@ -4,6 +4,6 @@ services:
 script:
   - docker build -t test-image:test .
   - docker run -d --name test -p 8983:8983 test-image:test
-  - sleep 3m
+  - sleep 2m
   - docker logs test
-  - curl -sSf http://localhost:8993
+  - curl -sSf http://localhost:8983
