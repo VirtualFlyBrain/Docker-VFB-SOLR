@@ -4,6 +4,8 @@ ENV VFB_OWL_VERSION=Current
 
 ENV WORKSPACE=/opt/VFB
 
+ENV OLS_HOME=/opt/solr
+
 USER root
 
 RUN apt-get update && \
