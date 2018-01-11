@@ -2,7 +2,7 @@
 
 init-solr-home
 
-solr start -p 8984
+solr start -p 8983
 
 curl -sSf http://localhost:8983/solr
 
