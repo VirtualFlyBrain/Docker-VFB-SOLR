@@ -1,9 +1,6 @@
 #!/bin/bash
 
-precreate-core ontology ${WORKSPACE}/OLS/ols-solr/src/main/solr-5-config/ontology
-precreate-core autosuggest ${WORKSPACE}/OLS/ols-solr/src/main/solr-5-config/autosuggest
-
-cp -f /opt/VFB/OLS/ols-solr/src/main/solr-5-config/solr.xml /opt/solr/server/solr/
+init-solr-home
 
 solr start -p 8984
 
