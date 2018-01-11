@@ -7,6 +7,7 @@ ENV WORKSPACE=/opt/VFB
 RUN chmod -R 777 /opt/solr
 
 ENV SOLR_HOME=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
+ENV solr.data.dir=/opt/solr/server/solr
 
 USER root
 
