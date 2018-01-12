@@ -2,7 +2,7 @@
 
 init-solr-home
 
-solr start -p 8983
+solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
 
 curl -sSf http://localhost:8983/solr
 
@@ -14,4 +14,4 @@ java -Xmx2g -jar -Dspring.profiles.active=fbbt ${WORKSPACE}/OLS/ols-apps/ols-sol
 
 solr stop
 
-solr-foreground
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
