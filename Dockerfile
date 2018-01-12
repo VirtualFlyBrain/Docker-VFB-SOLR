@@ -20,7 +20,7 @@ mkdir -p ${WORKSPACE} && \
 cd ${WORKSPACE} && \
 git clone --quiet https://github.com/EBISPOT/OLS.git
 
-COPY application-fbbt.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-fbbt.properties
+COPY application-vfb.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-vfb.properties
 
 RUN cd ${WORKSPACE}/OLS && \
 mvn -q clean package
