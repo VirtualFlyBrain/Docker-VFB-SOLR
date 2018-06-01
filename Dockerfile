@@ -4,6 +4,8 @@ ENV VFB_OWL_VERSION=Current
 
 ENV WORKSPACE=/opt/VFB
 
+ENV SOLRDOCS={"id":"vfb:individual:http://virualflybrain.org/data/Court2017","iri":"http://virualflybrain.org/data/Court2017","short_form":"Court2017","shortform_autosuggest":["Court2017","Court2017"],"obo_id":"Court2017","label":"Court2017","label_autosuggest":"Court2017","label_autosuggest_ws":"Court2017","label_autosuggest_e":"Court2017","autosuggest":["Court2017"],"autosuggest_e":["Court2017"],"description":["Court2017 DataSet"],"ontology_name":"vfb","ontology_title":"Virtual Fly Brain Knowledge Base","ontology_prefix":"VFB","ontology_iri":"http://purl.obolibrary.org/obo/fbbt/vfb/vfb.owl","type":"individual","is_defining_ontology":false,"has_children":false,"is_root":true}
+
 RUN chmod -R 777 /opt/solr
 
 ENV SOLR_HOME=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
