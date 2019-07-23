@@ -14,7 +14,7 @@ ENV solr.data.dir=/opt/solr/server/solr
 USER root
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install git maven openjdk-8-jdk tree nano && \
+  apt-get -qq -y install git maven openjdk-8-jdk apt-transport-https tree nano && \
   rm -rf /var/lib/apt/lists/*
   
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -41,8 +41,7 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
 RUN echo "deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install apt-transport-https && \
-  apt-get -qq -y install apt-transport-https conda
+  apt-get -qq -y install conda
 
 #USER $SOLR_USER
 
