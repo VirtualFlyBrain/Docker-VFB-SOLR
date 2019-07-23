@@ -35,7 +35,7 @@ RUN chmod -R 777 /opt || :
 
 RUN chmod +x /opt/VFB/loadOLS.sh
 
-RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg -- dearmor > conda.gpg && \
+RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg && \
   install -o root -g root -m 644 conda.gpg /etc/apt/trusted.gpg.d/
   
 RUN echo "deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
