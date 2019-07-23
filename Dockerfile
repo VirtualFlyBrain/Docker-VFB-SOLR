@@ -17,7 +17,7 @@ RUN apt-get -qq update && \
   apt-get -qq -y install git maven openjdk-8-jdk tree nano && \
   rm -rf /var/lib/apt/lists/*
   
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin/java
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN echo Building OLS && \
 mkdir -p ${WORKSPACE} && \
