@@ -41,7 +41,8 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
 RUN echo "deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install conda
+  apt-get -qq -y install apt-transport-https && \
+  apt-get -qq -y install apt-transport-https conda
 
 #USER $SOLR_USER
 
