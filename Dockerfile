@@ -33,6 +33,17 @@ RUN chmod -R 777 /opt || :
 
 RUN chmod +x /opt/VFB/loadOLS.sh
 
+RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg -- && \
+  dearmor > conda.gpg && \
+  install -o root -g root -m 644 conda.gpg /etc/apt/trusted.gpg.d/
+
+RUN apt-get -qq update && \
+  apt-get -qq -y install conda
+
+# Add our Debian repo
+echo "deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda
+stable main" > /etc/apt/sources.list.d/conda.list
+
 USER $SOLR_USER
 
 ENTRYPOINT ["/opt/VFB/loadOLS.sh"]
