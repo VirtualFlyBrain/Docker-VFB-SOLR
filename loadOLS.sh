@@ -29,6 +29,8 @@ conda install -y -n env --file /opt/VFB_neo4j/requirements.txt
 
 source activate env
 
+cd /opt/VFB_neo4j/src/
+
 python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:8983/solr/ontology
 
 solr stop
