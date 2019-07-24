@@ -42,6 +42,8 @@ RUN echo "deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda sta
 
 RUN apt-get -qq update && \
   apt-get -qq -y install conda
+  
+ENV PATH=/opt/conda/bin:/opt/conda/envs/env/bin:$PATH
 
 #USER $SOLR_USER
 
