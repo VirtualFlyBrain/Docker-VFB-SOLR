@@ -23,6 +23,8 @@ cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
 
 conda create -y -n env python=3.7
 
+conda config --append channels conda-forge
+
 conda install -y -n env --file /opt/VFB_neo4j/requirements.txt
 
 source activate env
