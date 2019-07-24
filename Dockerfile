@@ -2,6 +2,8 @@ FROM solr:5
 
 ENV VFB_OWL_VERSION=Current
 
+ENV PDBserver=http://pdb.VirtualFlyBrain.org
+
 ENV WORKSPACE=/opt/VFB
 
 RUN chmod -R 777 /opt/solr
