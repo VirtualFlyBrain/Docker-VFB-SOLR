@@ -16,9 +16,6 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-# Manually add DataSets:
-curl -X POST -H 'Content-Type: application/json' 'http://localhost:8983/solr/ontology/update' --data-binary "[${SOLRDOCS}]"
-
 solr stop
 
 solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
