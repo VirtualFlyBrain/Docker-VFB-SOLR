@@ -18,7 +18,7 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 PYTHONPATH=/opt/VFB_neo4j/src
 
-PATH /opt/conda/envs/env/bin:$PATH
+PATH=/opt/conda/envs/env/bin:$PATH
 
 mkdir -p /opt/
 cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git 
