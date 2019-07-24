@@ -33,6 +33,11 @@ cd /opt/VFB_neo4j/src/
 
 python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:8983/solr/ontology
 
+cd /
+
+rm -rf cd /opt/VFB_neo4j
+rm -rf cd /opt/conda
+
 solr stop
 
 solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
