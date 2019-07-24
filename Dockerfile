@@ -14,7 +14,7 @@ ENV solr.data.dir=/opt/solr/server/solr
 USER root
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install git maven openjdk-8-jdk apt-transport-https tree nano && \
+  apt-get -qq -y install git maven openjdk-8-jdk apt-transport-https tree apt-utils nano && \
   rm -rf /var/lib/apt/lists/*
   
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
