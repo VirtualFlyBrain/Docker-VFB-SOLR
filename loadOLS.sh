@@ -18,12 +18,10 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 export PYTHONPATH=/opt/VFB_neo4j/src
 
-export PATH=/opt/conda/envs/env/bin:$PATH
-
 mkdir -p /opt/
 cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git 
 
-conda create -n env python=3.7
+conda create -y -n env python=3.7
 
 conda install -y -n env --file /opt/VFB_neo4j/requirements.txt
 
