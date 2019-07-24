@@ -16,9 +16,9 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-PYTHONPATH=/opt/VFB_neo4j/src
+export PYTHONPATH=/opt/VFB_neo4j/src
 
-PATH=/opt/conda/envs/env/bin:$PATH
+export PATH=/opt/conda/envs/env/bin:$PATH
 
 mkdir -p /opt/
 cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git 
