@@ -16,8 +16,27 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-# Manually add DataSets:
-curl -X POST -H 'Content-Type: application/json' 'http://localhost:8983/solr/ontology/update' --data-binary "[${SOLRDOCS}]"
+export PYTHONPATH=/opt/VFB_neo4j/src
+
+mkdir -p /opt/
+cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git 
+
+conda create -y -n env python=3.7
+
+conda config --append channels conda-forge
+
+conda install -y -n env --file /opt/VFB_neo4j/requirements.txt
+
+source activate env
+
+cd /opt/VFB_neo4j/src/
+
+python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:8983/solr/ontology
+
+cd /
+
+rm -rf cd /opt/VFB_neo4j
+rm -rf cd /opt/conda
 
 solr stop
 
