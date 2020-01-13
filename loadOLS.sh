@@ -31,7 +31,7 @@ source activate env
 
 cd /opt/VFB_neo4j/src/
 
-pip install -r requirements.txt
+pip install -r /opt/VFB_neo4j/requirements.txt
 
 python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:8983/solr/ontology
 
