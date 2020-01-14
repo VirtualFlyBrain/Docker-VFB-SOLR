@@ -20,14 +20,6 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 sleep 10s
 
-solr stop
-
-sleep 10s
-
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
-
-sleep 10s
-
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
@@ -49,10 +41,18 @@ python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:
 
 cd /
 
-rm -rf cd /opt/VFB_neo4j
-rm -rf cd /opt/conda
+#rm -rf cd /opt/VFB_neo4j
+#rm -rf cd /opt/conda
 
 echo END LOADING
+
+sleep 10s
+
+solr stop
+
+sleep 10s
+
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
 sleep 9m
 
