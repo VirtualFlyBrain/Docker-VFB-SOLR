@@ -2,7 +2,7 @@
 
 init-solr-home
 
-
+echo START LOADING
 
 cd ${WORKSPACE}/
 wget https://github.com/VirtualFlyBrain/VFB_owl/raw/${VFB_OWL_VERSION}/src/owl/vfb.owl.gz
@@ -42,20 +42,26 @@ cd /
 rm -rf cd /opt/VFB_neo4j
 rm -rf cd /opt/conda
 
+echo END LOADING
+
 sleep 9m
 
 while (true)
 do
   if [ $(curl -sSf "https://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) -gt 1 ]
   then
+    echo FBbt docs found - PASS
     sleep 10m
   else
+    echo FBbt docs found - FAIL
     break
    fi
-  if [ $(curl -sSf "https://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) - gt 1 ]
+  if [ $(curl -sSf "https://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep VFBexp_ | wc -l) - gt 1 ]
   then
+    echo VFBexp docs found - PASS
     sleep 10m
   else
+    echo VFBexp docs found - FAIL
     break
    fi
 done
