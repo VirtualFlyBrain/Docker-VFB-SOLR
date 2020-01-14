@@ -42,6 +42,20 @@ cd /
 rm -rf cd /opt/VFB_neo4j
 rm -rf cd /opt/conda
 
-solr stop
+sleep 9m
 
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
+while (true)
+do
+  if [ $(curl -sSf "https://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) -gt 1 ]
+  then
+    sleep 10m
+  else
+    break
+   fi
+  if [ $(curl -sSf "https://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) - gt 1 ]
+  then
+    sleep 10m
+  else
+    break
+   fi
+done
