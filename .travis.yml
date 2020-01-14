@@ -4,7 +4,7 @@ services:
 script:
   - docker build -t test-image:test .
   - travis_wait 50 docker run -d --name test -p 8983:8983 -e VFB_OWL_VERSION=Current -e PDBserver=http://pdb.virtualflybrain.org test-image:test
-  - while [ $(docker logs --tail 1 | grep "END LOADING") | wc -l) -lt 1 ]; do docker logs --tail 100 test; sleep 30s; done
+  - while ( $(docker logs --tail 1 | grep "END LOADING") | wc -l) -lt 1 ); do docker logs --tail 100 test; sleep 30s; done
   - docker logs --tail 100 test
   - curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
   - echo Checking for medulla
