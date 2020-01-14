@@ -2,6 +2,8 @@
 
 init-solr-home
 
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
+
 echo START LOADING
 
 cd ${WORKSPACE}/
@@ -18,9 +20,13 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 sleep 10s
 
+solr stop
+
+sleep 10s
+
 solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
-sleep 1m
+sleep 10s
 
 export PYTHONPATH=/opt/VFB_neo4j/src
 
