@@ -20,6 +20,12 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 sleep 10s
 
+solr stop
+
+sleep 10s
+
+solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
+
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
