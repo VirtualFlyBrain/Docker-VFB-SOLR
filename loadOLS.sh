@@ -16,8 +16,6 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-sleep 1m
-
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
