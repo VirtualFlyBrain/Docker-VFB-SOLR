@@ -3,7 +3,7 @@ services:
   
 script:
   - docker build -t test-image:test .
-  - docker run -d --name test -p 8983:8983 -e VFB_OWL_VERSION=Current -e PDBserver=http://pdb.virtualflybrain.org test-image:test
+  - travis_wait 50 docker run -d --name test -p 8983:8983 -e VFB_OWL_VERSION=Current -e PDBserver=http://pdb.virtualflybrain.org test-image:test
   - sleep 9m
   - docker logs --tail 100 test
   - curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
