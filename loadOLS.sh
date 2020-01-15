@@ -6,6 +6,10 @@ solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
 
 echo START LOADING
 
+tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
+
+tree /opt/solr/server/solr/
+
 cd /opt/VFB
 wget https://github.com/VirtualFlyBrain/VFB_owl/raw/${VFB_OWL_VERSION}/src/owl/vfb.owl.gz
 gzip -d vfb.owl.gz
@@ -19,6 +23,10 @@ curl -sSf http://localhost:8983/solr/ontology/select
 java -Xmx2g -jar -Dspring.profiles.active=vfb /opt/VFB/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
 sleep 10s
+
+tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
+
+tree /opt/solr/server/solr/
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
@@ -53,6 +61,10 @@ cd /
 #rm -rf cd /opt/conda
 
 echo END LOADING
+
+tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
+
+tree /opt/solr/server/solr/
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
