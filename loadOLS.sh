@@ -6,9 +6,6 @@ solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -
 
 echo START LOADING
 
-tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
-
-tree /opt/solr/server/solr/
 
 cd /opt/VFB
 wget https://github.com/VirtualFlyBrain/VFB_owl/raw/${VFB_OWL_VERSION}/src/owl/vfb.owl.gz
