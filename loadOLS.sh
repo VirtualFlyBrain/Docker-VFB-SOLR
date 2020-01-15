@@ -18,6 +18,14 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
+sleep 10s
+
+solr stop
+
+sleep 10s
+
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
+
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
@@ -44,13 +52,7 @@ cd /
 
 echo END LOADING
 
-sleep 10s
 
-solr stop
-
-sleep 10s
-
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
 sleep 9m
 
