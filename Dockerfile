@@ -19,7 +19,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 RUN echo Building OLS && \
 mkdir -p /opt/VFB && \
 cd /opt/VFB && \
-git clone --quiet -b '3.2.0.RELEASE' --single-branch --depth 1 https://github.com/EBISPOT/OLS.git
+git clone --quiet -b '3.1.1.RELEASE' --single-branch --depth 1 https://github.com/EBISPOT/OLS.git
 
 COPY application-vfb.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-vfb.properties
 
