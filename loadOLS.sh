@@ -2,7 +2,7 @@
 
 init-solr-home
 
-solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
 echo START LOADING
 
@@ -19,20 +19,6 @@ curl -sSf http://localhost:8983/solr/ontology
 curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb /opt/VFB/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
-
-sleep 10s
-
-tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
-
-tree /opt/solr/server/solr/
-
-curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
-
-solr stop
-
-sleep 10s
-
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
 export PYTHONPATH=/opt/VFB_neo4j/src
 
@@ -60,13 +46,9 @@ cd /
 
 echo END LOADING
 
-tree /opt/VFB/OLS/ols-solr/src/main/solr-5-config/
-
-tree /opt/solr/server/solr/
-
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
-sleep 9m
+sleep 20m
 
 while (true)
 do
