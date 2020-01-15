@@ -4,8 +4,6 @@ ENV VFB_OWL_VERSION=Current
 
 ENV PDBserver=http://pdb.VirtualFlyBrain.org
 
-ENV WORKSPACE=/opt/VFB
-
 RUN chmod -R 777 /opt/solr
 
 ENV SOLR_HOME=/opt/solr/server/solr/
@@ -19,13 +17,13 @@ RUN apt-get -qq update && \
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN echo Building OLS && \
-mkdir -p ${WORKSPACE} && \
-cd ${WORKSPACE} && \
+mkdir -p /opt/VFB && \
+cd /opt/VFB && \
 git clone --quiet https://github.com/EBISPOT/OLS.git
 
 COPY application-vfb.properties ${WORKSPACE}/OLS/ols-apps/ols-solr-app/src/main/resources/application-vfb.properties
 
-RUN cd ${WORKSPACE}/OLS && \
+RUN cd /opt/VFB/OLS && \
 mvn -q clean package
 
 COPY loadOLS.sh /opt/VFB/loadOLS.sh
