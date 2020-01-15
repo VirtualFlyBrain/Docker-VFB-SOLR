@@ -6,7 +6,7 @@ solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
 
 echo START LOADING
 
-cd ${WORKSPACE}/
+cd /opt/VFB
 wget https://github.com/VirtualFlyBrain/VFB_owl/raw/${VFB_OWL_VERSION}/src/owl/vfb.owl.gz
 gzip -d vfb.owl.gz
 
@@ -16,7 +16,7 @@ curl -sSf http://localhost:8983/solr/ontology
 
 curl -sSf http://localhost:8983/solr/ontology/select
 
-java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
+java -Xmx2g -jar -Dspring.profiles.active=vfb /opt/VFB/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
 sleep 10s
 
