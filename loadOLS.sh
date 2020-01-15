@@ -20,6 +20,8 @@ java -Xmx2g -jar -Dspring.profiles.active=vfb ${WORKSPACE}/OLS/ols-apps/ols-solr
 
 sleep 10s
 
+curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
+
 solr stop
 
 sleep 10s
@@ -52,7 +54,7 @@ cd /
 
 echo END LOADING
 
-
+curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
 sleep 9m
 
