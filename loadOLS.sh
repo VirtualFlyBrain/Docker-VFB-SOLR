@@ -54,7 +54,7 @@ sleep 20m
 
 while (true)
 do
-  if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) -gt 1 ]
+  if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=short_form:FBbt*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) -gt 1 ]
   then
     echo FBbt docs found - PASS
     sleep 10m
@@ -62,7 +62,7 @@ do
     echo FBbt docs found - FAIL
     break
    fi
-  if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep VFBexp_ | wc -l) -gt 1 ]
+  if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=short_form:VFBexp_*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep VFBexp_ | wc -l) -gt 1 ]
   then
     echo VFBexp docs found - PASS
     sleep 10m
