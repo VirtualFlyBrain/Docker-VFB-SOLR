@@ -1,9 +1,12 @@
 services:
   - docker
-  
+before_install:
+  - export REPO=$(echo ${TRAVIS_REPO_SLUG} | awk '{gsub(/\./,"_",$0);print tolower($0)}')
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo ${TRAVIS_BRANCH/\//-}; fi`
+  - export TAG="$TAG-${TRAVIS_COMMIT::8}"
 script:
-  - docker build -t test-image:test .
-  - travis_wait 50 docker run -d --name test -p 8983:8983 -e VFB_OWL_VERSION=Current -e PDBserver=http://pdb.virtualflybrain.org test-image:test
+  - docker build -t $REPO:$TAG .
+  - travis_wait 50 docker run -d --name test -p 8983:8983 -e VFB_OWL_VERSION=Current -e PDBserver=http://pdb.virtualflybrain.org $REPO:$TAG
   - while [ $(docker logs --tail 100 test | grep "END LOADING" | wc -l) -lt 1 ]; do docker logs --tail 100 test; sleep 30s; done
   - docker logs --tail 100 test
   - sleep 1m
@@ -13,4 +16,9 @@ script:
   - if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=short_form:FBbt*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep FBbt | wc -l) -lt 1 ]; then echo FAIL ; docker logs --tail 10 test; travis_terminate 1; fi
   - echo Checking for FlyCircuit
   - if [ $(curl -sSf "http://localhost:8983/solr/ontology/select?q=short_form:VFBexp_*&distrib=false&fl=short_form&rows=100&wt=json&indent=true" | grep VFBexp_ | wc -l) -lt 1 ]; then echo FAIL; docker logs --tail 10 test; travis_terminate 1; fi
-  
+after_success:
+  - if [ $TRAVIS_PULL_REQUEST == false ]; then
+      cd $TRAVIS_BUILD_DIR;
+      docker login -u $DOCKER_USER -p $DOCKER_PASS;
+      docker push $REPO:$TAG;
+     fi;  
