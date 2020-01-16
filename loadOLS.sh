@@ -1,6 +1,6 @@
 #!/bin/bash
 
-solr start -p 8983 -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
 echo START LOADING
 
@@ -14,13 +14,8 @@ curl -sSf http://localhost:8983/solr/ontology/select
 
 java -Xmx2g -jar -Dspring.profiles.active=vfb /opt/VFB/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
-sleep 10s
-
-solr stop
-
-sleep 20s
-
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
+echo COMMIT and OPTIMIZE
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E%3Coptimize+waitSearcher%3D%22false%22%2F%3E
 
 sleep 10s
 
@@ -48,15 +43,8 @@ cd /
 #rm -rf cd /opt/VFB_neo4j
 #rm -rf cd /opt/conda
 
-sleep 10s
-
-solr stop
-
-sleep 20s
-
-solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
-
-sleep 30s
+echo COMMIT and OPTIMIZE
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E%3Coptimize+waitSearcher%3D%22false%22%2F%3E
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
