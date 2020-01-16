@@ -40,13 +40,14 @@ python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:
 
 cd /
 
-#rm -rf cd /opt/VFB_neo4j
-#rm -rf cd /opt/conda
-
 echo COMMIT and OPTIMIZE
 curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E%3Coptimize+waitSearcher%3D%22false%22%2F%3E
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
+
+rm -rf /opt/VFB_neo4j
+rm -rf /opt/conda
+rm -rf /opt/VFB/vfb.owl
 
 echo END LOADING
 
