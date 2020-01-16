@@ -22,6 +22,8 @@ sleep 20s
 
 solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
 
+sleep 10s
+
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
@@ -46,6 +48,15 @@ cd /
 #rm -rf cd /opt/VFB_neo4j
 #rm -rf cd /opt/conda
 
+sleep 10s
+
+solr stop
+
+sleep 20s
+
+solr-foreground -Dsolr.solr.home=/opt/VFB/OLS/ols-solr/src/main/solr-5-config/ -Dsolr.data.dir=/opt/VFB/OLS/ols-solr/src/main/solr-5-config &
+
+sleep 30s
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
