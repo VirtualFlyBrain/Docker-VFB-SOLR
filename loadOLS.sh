@@ -15,7 +15,9 @@ curl -sSf http://localhost:8983/solr/ontology/select
 java -Xmx2g -jar -Dspring.profiles.active=vfb /opt/VFB/OLS/ols-apps/ols-solr-app/target/ols-solr-app.jar
 
 echo COMMIT and OPTIMIZE
-curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E%3Coptimize+waitSearcher%3D%22false%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Coptimize+waitSearcher%3D%22false%22%2F%3E
 
 sleep 10s
 
@@ -41,7 +43,9 @@ python -m uk.ac.ebi.vfb.neo4j.neo2solr.ols_neo2solr $PDBserver http://localhost:
 cd /
 
 echo COMMIT and OPTIMIZE
-curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E%3Coptimize+waitSearcher%3D%22false%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Ccommit+waitSearcher%3D%22false%22+expungeDeletes%3D%22true%22%2F%3E
+curl http://localhost:8983/solr/ontology/update?stream.body=%3Coptimize+waitSearcher%3D%22false%22%2F%3E
 
 curl -sSf "http://localhost:8983/solr/ontology/select?q=*:*&wt=json&indent=true"
 
