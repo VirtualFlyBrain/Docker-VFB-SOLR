@@ -24,7 +24,7 @@ sleep 10s
 export PYTHONPATH=/opt/VFB_neo4j/src
 
 mkdir -p /opt/
-cd /opt && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git 
+cd /opt && git clone -b facets https://github.com/VirtualFlyBrain/VFB_neo4j.git 
 
 conda create -y -n env python=3.7
 
